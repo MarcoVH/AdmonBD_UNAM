@@ -1,0 +1,15 @@
+connect system
+
+CREATE TABLESPACE diplo DATAFILE 'C:\oraclexe\oradata\xe\DIPLO01.dbf' SIZE 10 M;
+
+ALTER TABLESPACE diplo ADD DATAFILE 'C:\oraclexe\oradata\xe\DIPLO02.dbf' SIZE 10 M;
+
+CREATE USER udiplo IDENTIFIED BY dd DEFAULT TABLESPACE diplo PASSWORD EXPIRE;
+
+GRANT CONNECT TO udiplo;
+
+ALTER USER udiplo IDENTIFIED BY acatlan;
+
+CREATE TABLE prueba(uno varchar2(10));
+
+GRANT RESOURCE TO udiplo;

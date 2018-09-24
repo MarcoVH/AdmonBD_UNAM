@@ -1,0 +1,128 @@
+#a)
+
+CREATE TABLE pais (
+id_pais number(3,0),
+desc_pais varchar2(10),
+CONSTRAINT pais_pk PRIMARY KEY (id_pais)
+);
+
+CREATE TABLE equipo(
+id_equipo number(3,0),
+desc_equipo varchar2(15),
+id_pais number(3,0),
+CONSTRAINT equipo_pk PRIMARY KEY (id_equipo),
+CONSTRAINT eq_pa_fk FOREIGN KEY (id_pais) REFERENCES pais(id_pais)
+);
+
+CREATE TABLE lugar(
+id_lugar number(3,0),
+desc_lugar varchar2(15),
+CONSTRAINT lugar_pk PRIMARY KEY (id_lugar)
+);
+
+
+CREATE TABLE torneo(
+ayo number(4,0),
+id_equipo number(3,0),
+id_lugar number(3,0),
+goles number(2,0),
+CONSTRAINT torneo_pk PRIMARY KEY (ayo, id_lugar),
+CONSTRAINT to_eq_fk FOREIGN KEY (id_equipo) REFERENCES equipo(id_equipo),
+CONSTRAINT to_lu_fk FOREIGN KEY (id_lugar) REFERENCES lugar(id_lugar)
+);
+
+#b) 
+
+ALTER TABLE equipo ADD(fec_fund date);
+
+#c)
+
+ALTER TABLE equipo MODIFY(desc_equipo varchar2(30));
+
+#d) 
+
+ALTER TABLE equipo MODIFY(desc_equipo varchar2(30) CONSTRAINT eq_desc_equipo_nn NOT NULL);
+
+#e) 
+ALTER TABLE equipo DROP CONSTRAINT eq_desc_equipo_nn;
+
+#f)
+ALTER TABLE equipo SET UNUSED(id_pais);
+ALTER TABLE equipo ADD(id_pais number(3,0));
+ALTER TABLE equipo DROP UNUSED COLUMNS;
+
+#g) 
+DROP TABLE torneo CASCADE CONSTRAINTS;
+CREATE TABLE torneo(
+ayo number(4,0),
+id_equipo number(3,0),
+id_lugar number(3,0),
+goles number(2,0),
+CONSTRAINT torneo_pk PRIMARY KEY (ayo, id_lugar),
+CONSTRAINT to_eq_fk FOREIGN KEY (id_equipo) REFERENCES equipo(id_equipo),
+CONSTRAINT to_lu_fk FOREIGN KEY (id_lugar) REFERENCES lugar(id_lugar)
+);
+
+#H)
+RENAME torneo TO torneos;
+
+#i)
+CREATE sequence sequipo;
+CREATE sequence slugar;
+CREATE sequence spais;
+
+#j)
+ALTER SEQUENCE sequipo CYCLE;
+DROP SEQUENCE sequipo;
+CREATE sequence sequipo;
+
+#k)
+CREATE PUBLIC SYNONYM sinpais FOR udiplo.pais;
+CREATE PUBLIC SYNONYM sinequipo FOR udiplo.equipo;
+CREATE PUBLIC SYNONYM sintorneo FOR udiplo.torneo;
+CREATE PUBLIC SYNONYM sinlugar FOR udiplo.lugar;
+
+#2
+
+CREATE TABLE cat_division(
+id_division number(2,0) CONSTRAINT cat_division_pk PRIMARY KEY,
+descripcion_division varchar2(20)
+);
+
+CREATE TABLE cat_cliente(
+id_cliente number(2,0) CONSTRAINT cat_cliente_pk PRIMARY KEY,
+razon_social_cliente varchar2(50),
+id_division number(2,0) CONSTRAINT cl_div_fk REFERENCES cat_division(id_division),
+dias_credito_cliente number(2,0)
+);
+
+CREATE TABLE factura (
+id_factura NUMBER(3,0) CONSTRAINT factura_pk PRIMARY KEY,
+fecha_factura DATE,
+id_cliente NUMBER (2,0) CONSTRAINT fac_cli_fk REFERENCES cat_cliente(id_cliente),
+monto_factura NUMBER(10,2),
+iva_factura NUMBER (10,2),
+total_factura NUMBER (10,2)
+);
+
+
+CREATE TABLE pago(
+id_pago NUMBER(3,0) CONSTRAINT pago_pk PRIMARY KEY,
+fecha_pago DATE,
+id_cliente NUMBER(2,0) CONSTRAINT pag_cli_fk REFERENCES cat_cliente(id_cliente),
+importe_pago NUMBER(10,2)
+);
+
+
+#3
+
+CREATE TABLE empleado(
+id_emp NUMBER(4,0)CONSTRAINT empleado_pk PRIMARY KEY,
+pat_emp VARCHAR2(30),
+mat_emp VARCHAR2(30),
+nom_emp VARCHAR2(30),
+fecha_nac_emp DATE,
+edad_emp NUMBER(2,0),
+rfc_emp VARCHAR2(10)
+);
+

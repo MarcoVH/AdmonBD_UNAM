@@ -1,0 +1,39 @@
+
+create table branch(
+branchNo varchar2(5),
+street varchar2(30),
+city varchar2(30),
+postcode varchar2(10) constraint bh_postcode_nn not null,
+constraint branch_pk primary key (branchNo)
+);
+
+#Eliminar tabla
+drop table prueba cascade constraints;
+
+create table prueba(
+numerote number(38,-40));
+
+insert into prueba values (1000000000000000000000000000000000000000);
+
+create table staff(
+staffno varchar2(4),
+fname varchar2(15),
+iname varchar2(15),
+position varchar2(15),
+sex varchar2(1),
+dob date,
+salary number(7,0),
+branchNo varchar2(5) constraint sf_bh_fk references branch(branchNo),
+constraint staff_pk primary key (staffno)
+);
+
+alter table staff add constraint sf_bh_fk foreign key (branchNo)
+references branch(branchNo);
+
+create sequence prueba1;
+prueba1.currval
+prueba1.nextval
+
+select prueba1.currval from dual;
+
+create sequence prueba2 increment by -5 start with 100, maxvalue 100;
