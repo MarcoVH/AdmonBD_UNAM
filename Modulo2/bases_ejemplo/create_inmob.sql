@@ -57,5 +57,5 @@ CREATE TABLE Registration(
 	clientNo CONSTRAINT re_cl_fk REFERENCES Client(clientNo),
 	branchNo CONSTRAINT re_br_fk REFERENCES Branch(branchNo),
 	staffNo CONSTRAINT re_st_fk REFERENCES Staff(staffNo),
-	dateJoined DATE;
+	dateJoined DATE
 );
