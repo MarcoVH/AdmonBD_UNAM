@@ -30,7 +30,7 @@ CREATE TABLE PrivateOwner(
 	fName VARCHAR2(15),
 	Iname VARCHAR2(15),
 	address VARCHAR2(20),
-	telno VARCHAR2(15),
+	telno VARCHAR2(15)
 );
 
 CREATE TABLE PropertyForRent(
