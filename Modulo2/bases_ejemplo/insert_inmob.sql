@@ -28,10 +28,10 @@ INSERT INTO client VALUES('CR56','Aline','Stewart','0141-848-1825','Flat','350')
 INSERT INTO client VALUES('CR74','Mike','Ritchie','01475-392178','House','750');
 INSERT INTO client VALUES('CR62','Mary','Tregear','01224-196720','Flat','600');
 
-INSERT INTO registration VALUES('CR76','B005','SL41','37988');
-INSERT INTO registration VALUES('CR56','B003','SG37','37722');
-INSERT INTO registration VALUES('CR74','B003','SG37','37576');
-INSERT INTO registration VALUES('CR62','B007','SA9','37687');
+INSERT INTO registration VALUES('CR76','B005','SL41','02/01/2004');
+INSERT INTO registration VALUES('CR56','B003','SG37','11/04/2003');
+INSERT INTO registration VALUES('CR74','B003','SG37','16/11/2002');
+INSERT INTO registration VALUES('CR62','B007','SA9','07/03/2003');
 
 INSERT INTO viewing VALUES('CR56','PA14','24/05/2004','too small');
 INSERT INTO viewing VALUES('CR76','PG4','20/04/2004','too remote');
