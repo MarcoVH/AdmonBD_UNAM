@@ -47,3 +47,16 @@ from cat_cliente
 where length(id_cliente)<3;
 
 #8
+SELECT lpad(id_emp,7,'0')||
+rpad(pat_emp,20,' ')||
+rpad(mat_emp,20,' ')||
+rpad(nom_emp,30,' ')||
+to_char(fecha_nac_emp,'MM-DD-YYYY')||
+nvl(to_char(edad_emp,'fm00'),'00')||
+nvl(rfc_emp,'**********')
+as "CADENA"
+FROM empleado;
+
+spool 'M:\DiplomadoBD\Modulo2\Pregunta8.txt'
+/
+spool off
