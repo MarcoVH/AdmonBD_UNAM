@@ -17,7 +17,7 @@ CREATE TABLE Staff(
 );
 
 CREATE TABLE Client(
-	clientNo VARCHAR2(5) CONSTRAINT Client_pk REFERENCES Client(clientNo),
+	clientNo VARCHAR2(5) CONSTRAINT Client_pk PRIMARY KEY,
 	fName VARCHAR2(15),
 	Iname VARCHAR2(15),
 	telno VARCHAR2(15),
