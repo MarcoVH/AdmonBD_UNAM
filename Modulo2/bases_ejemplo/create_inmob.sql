@@ -50,7 +50,7 @@ CREATE TABLE Viewing(
 	clientNo VARCHAR2(5) CONSTRAINT vi_cl_fk REFERENCES Client(clientNo),
 	propertyNo VARCHAR2(5) CONSTRAINT vi_pfr REFERENCES PropertyForRent(propertyNo),
 	viewDate DATE,
-	comment VARCHAR2(15),
+	comment VARCHAR2(15)
 );
 
 CREATE TABLE Registration(
