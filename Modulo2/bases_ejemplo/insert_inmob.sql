@@ -33,8 +33,8 @@ INSERT INTO registration VALUES('CR56','B003','SG37','37722');
 INSERT INTO registration VALUES('CR74','B003','SG37','37576');
 INSERT INTO registration VALUES('CR62','B007','SA9','37687');
 
-INSERT INTO viewing VALUES('CR56','PA14','38131','too small')
-INSERT INTO viewing VALUES('CR76','PG4','38097','too remote')
-INSERT INTO viewing VALUES('CR56','PG4','38133','')
-INSERT INTO viewing VALUES('CR62','PA14','38121','no dining room')
-INSERT INTO viewing VALUES('CR56','PG36','38105','')
+INSERT INTO viewing VALUES('CR56','PA14','24/05/2004','too small');
+INSERT INTO viewing VALUES('CR76','PG4','20/04/2004','too remote');
+INSERT INTO viewing VALUES('CR56','PG4','26/05/2004','');
+INSERT INTO viewing VALUES('CR62','PA14','14/05/2004','no dining room');
+INSERT INTO viewing VALUES('CR56','PG36','28/04/2004','');
