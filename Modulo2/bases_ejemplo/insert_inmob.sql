@@ -4,12 +4,12 @@ INSERT INTO branch VALUES('B003','163 Main St','Glasgow','G11 9QX');
 INSERT INTO branch VALUES('B004','32 Manse Rd','Bristol','BS99 1NZ');
 INSERT INTO branch VALUES('B002','56 Clover Dr','London','NW10 6EU');
 
-INSERT INTO staff VALUES('SL21','John','White','Manager','M','16711','30000','B005');
-INSERT INTO staff VALUES('SG37','Ann','Beech','Assistant','F','22230','12000','B003');
-INSERT INTO staff VALUES('SG14','David','Ford','Supervisor','M','21268','18000','B003');
-INSERT INTO staff VALUES('SA9','Mary','Howe','Assistant','F','25618','9000','B007');
-INSERT INTO staff VALUES('SG5','Susan','Brand','Manager','F','14765','24000','B003');
-INSERT INTO staff VALUES('SL41','Julie','Lee','Assistant','F','23906','9000','B005');
+INSERT INTO staff VALUES('SL21','John','White','Manager','M','01/10/1945','30000','B005');
+INSERT INTO staff VALUES('SG37','Ann','Beech','Assistant','F','10/11/1960','12000','B003');
+INSERT INTO staff VALUES('SG14','David','Ford','Supervisor','M','24/03/1958','18000','B003');
+INSERT INTO staff VALUES('SA9','Mary','Howe','Assistant','F','19/02/1970','9000','B007');
+INSERT INTO staff VALUES('SG5','Susan','Brand','Manager','F','03/06/1940','24000','B003');
+INSERT INTO staff VALUES('SL41','Julie','Lee','Assistant','F','13/06/1965','9000','B005');
 
 INSERT INTO propertyforrent VALUES('PA14','16 Holhead','Aberdeen','AB7 5SU','House','6','650','CO46','SA9','B007');
 INSERT INTO propertyforrent VALUES('PL94','6Argyll St','London','NW2','Flat','4','400','CO87','SL41','B005');
