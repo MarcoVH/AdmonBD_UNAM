@@ -29,7 +29,7 @@ CREATE TABLE PrivateOwner(
 	ownerNo VARCHAR2(5) CONSTRAINT PrivateOwner_pk PRIMARY KEY,
 	fName VARCHAR2(15),
 	Iname VARCHAR2(15),
-	address VARCHAR2(20),
+	address VARCHAR2(40),
 	telno VARCHAR2(15)
 );
 
@@ -50,7 +50,7 @@ CREATE TABLE Viewing(
 	clientNo VARCHAR2(5) CONSTRAINT vi_cl_fk REFERENCES Client(clientNo),
 	propertyNo VARCHAR2(5) CONSTRAINT vi_pfr REFERENCES PropertyForRent(propertyNo),
 	viewDate DATE,
-	comment1 VARCHAR2(15)
+	comment1 VARCHAR2(15) 
 );
 
 CREATE TABLE Registration(
