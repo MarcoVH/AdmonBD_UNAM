@@ -1,0 +1,23 @@
+CREATE VIEW employeevu
+AS SELECT employee_id,last_name,job_id
+FROM employees
+WHERE department_id=10;
+
+/*Asi se pueden ver los atributos de la tabla*/
+DESC empoyeevu
+
+/*Para ver si trae la misma información la vista que la tabla de donde proviene la información*/
+SELECT * 
+FROM Employees
+WHERE department_id=10;
+
+CREATE VIEW salaryvu
+AS SELECT employee_id Employee_Number,last_name Name,salary Income
+FROM employees
+WHERE department_id=30;
+
+/*Se ejecuta primero hasta el WHERE*/
+CREATE VIEW empvu10
+AS SELECT *
+FROM employees
+WHERE department_id=10;
