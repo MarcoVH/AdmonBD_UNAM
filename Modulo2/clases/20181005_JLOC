@@ -17,13 +17,30 @@ FROM employees
 WHERE department_id=30;
 
 /*Se ejecuta primero hasta el WHERE*/
-CREATE VIEW empvu10
+CREATE OR REPLACE VIEW empvu10
 AS SELECT *
 FROM employees
-WHERE department_id=10;
+WHERE department_id=10
+WITH CHECK OPTION CONSTRAINT empvu10_ck;
 
 INSERT INTO empvu10 (employee_id, last_name, email,hire_date,job_id, department_id)
 VALUES (900,'Lopez','lopez@hotmail.com','05/10/18','IT_PROG',10);
 
 INSERT INTO empvu10 (employee_id, last_name, email,hire_date,job_id, department_id)
 VALUES (901,'Perez','perez@hotmail.com','05/10/18','IT_PROG',30);
+
+ROLLBACK;
+
+CREATE OR REPLACE VIEW empvu10
+AS SELECT *
+FROM employees
+WHERE department_id=10
+WITH CHECK OPTION CONSTRAINT empvu10_ck;
+
+ROLLBACK;
+
+CREATE OR REPLACE VIEW empvu10
+AS SELECT *
+FROM employees
+WHERE department_id=10
+WITH READ ONLY;
