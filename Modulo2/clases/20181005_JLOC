@@ -4,7 +4,7 @@ FROM employees
 WHERE department_id=10;
 
 /*Asi se pueden ver los atributos de la tabla*/
-DESC empoyeevu
+DESC employeevu
 
 /*Para ver si trae la misma información la vista que la tabla de donde proviene la información*/
 SELECT * 
@@ -21,3 +21,9 @@ CREATE VIEW empvu10
 AS SELECT *
 FROM employees
 WHERE department_id=10;
+
+INSERT INTO empvu10 (employee_id, last_name, email,hire_date,job_id, department_id)
+VALUES (900,'Lopez','lopez@hotmail.com','05/10/18','IT_PROG',10);
+
+INSERT INTO empvu10 (employee_id, last_name, email,hire_date,job_id, department_id)
+VALUES (901,'Perez','perez@hotmail.com','05/10/18','IT_PROG',30);
