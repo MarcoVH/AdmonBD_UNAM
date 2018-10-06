@@ -69,5 +69,25 @@ on A.id_equipo=e.id_equipo
 order by 3 desc, 2 desc;
 
 
+/*JLOC*/
+8.
+select e.desc_equipo
+FROM (select id_equipo, count(id_equipo) as finales 
+from torneo
+group by id_equipo) A
+LEFT OUTER JOIN equipo e
+ON A.id_equipo=e.id_equipo
+WHERE A.finales>=3
+ORDER by 1;
 
+9.
+select e.desc_equipo
+FROM (select id_equipo, count(id_equipo) as primeros
+from torneo
+where id_lugar = 1
+group by id_equipo) B
+LEFT OUTER JOIN equipo e
+ON B.id_equipo=e.id_equipo
+WHERE B.primeros>=3
+ORDER by B.Primeros;
 
