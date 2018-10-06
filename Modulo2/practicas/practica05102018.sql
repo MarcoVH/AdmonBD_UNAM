@@ -93,9 +93,25 @@ equipo e
 on A.id_equipo=e.id_equipo
 order by 3 desc, 2 desc;
 
+#7
 
-/*JLOC*/
-8.
+select A.ayo, A.primero, B.segundo
+from
+(select t.ayo, e.desc_equipo as primero 
+from torneo t
+left outer join equipo e
+on e.id_equipo=t.id_equipo
+where t.id_lugar=1) A
+full outer join 
+(select t.ayo, e.desc_equipo as segundo 
+from torneo t
+left outer join equipo e
+on e.id_equipo=t.id_equipo
+where t.id_lugar=2) B
+on A.ayo=B.ayo;
+
+#8
+
 select e.desc_equipo
 FROM (select id_equipo, count(id_equipo) as finales 
 from torneo
@@ -105,7 +121,8 @@ ON A.id_equipo=e.id_equipo
 WHERE A.finales>=3
 ORDER by 1;
 
-9.
+
+#9
 select e.desc_equipo
 FROM (select id_equipo, count(id_equipo) as primeros
 from torneo
@@ -115,4 +132,3 @@ LEFT OUTER JOIN equipo e
 ON B.id_equipo=e.id_equipo
 WHERE B.primeros>=3
 ORDER by B.Primeros;
-
