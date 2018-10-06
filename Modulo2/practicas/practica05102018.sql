@@ -70,6 +70,44 @@ group by v.desc_pais) C
 on B.desc_pais=C.desc_pais
 order by 2 desc;
 
+#5 v2
+
+
+select A.desc_pais, A.finales as finales, nvl(B.primeros,0) as primeros,
+nvl(C.segundos, 0) as segundos
+from
+(select v.desc_pais, count(id_lugar) as finales
+from (select p.desc_pais, t.id_equipo, t.id_lugar, p.id_pais
+	from torneo t
+	full outer join equipo e 
+	on e.id_equipo=t.id_equipo
+	full outer join pais p
+	on e.id_pais=p.id_pais) v
+group by v.desc_pais) A
+left outer join 
+(select v.desc_pais, count(id_lugar) as primeros
+from (select p.desc_pais, t.id_equipo, t.id_lugar, p.id_pais
+	from torneo t
+	full outer join equipo e 
+	on e.id_equipo=t.id_equipo
+	full outer join pais p
+	on e.id_pais=p.id_pais) v 
+where id_lugar = 1
+group by v.desc_pais) B
+on A.desc_pais=B.desc_pais
+left outer join 
+(select v.desc_pais, count(id_lugar) as segundos
+from (select p.desc_pais, t.id_equipo, t.id_lugar, p.id_pais
+	from torneo t
+	full outer join equipo e 
+	on e.id_equipo=t.id_equipo
+	full outer join pais p
+	on e.id_pais=p.id_pais) v 
+where id_lugar = 2
+group by v.desc_pais) C
+on B.desc_pais=C.desc_pais
+order by 2 desc;
+
 #6
 select e.desc_equipo, A.finales as finales, nvl(B.primeros,0) as primeros,
  nvl(C.segundos,0) as segundos from 
