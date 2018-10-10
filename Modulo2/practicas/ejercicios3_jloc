@@ -1,0 +1,31 @@
+/*1.*/
+SELECT * FROM
+PropertyforRent
+WHERE rent>(
+SELECT AVG(rent)
+FROM propertyforrent
+WHERE LOWER(city)='glasgow');
+
+/*2.*/
+SELECT v.clientNo, c.fName, c.IName
+FROM viewing v, propertyforrent pr, client c
+WHERE v.propertyno=pr.propertyno
+AND v.clientNo=c.ClientNo
+AND pr.rooms=3
+GROUP BY v.clientNo, c.fName, c.IName
+HAVING count(pr.rooms)=
+(SELECT count(propertyNo)
+FROM PropertyForRent
+WHERE rooms=3);
+
+
+/*3.*/
+
+SELECT c.fName,c.IName,v.viewDate,v.comment1
+FROM client c, viewing v
+WHERE c.clientNo=v.clientNo
+AND viewDate<
+(SELECT min(v.viewDATE)
+FROM viewing v, client c
+WHERE v.clientNo=c.clientNo
+AND (lower(c.fName)=lower('&Nombre') AND lower(c.IName)=lower('&Apellido')));
