@@ -1,0 +1,54 @@
+/*1.*/
+SELECT * FROM
+PropertyforRent
+WHERE rent>(
+SELECT AVG(rent)
+FROM propertyforrent
+WHERE LOWER(city)='glasgow');
+
+/*2.*/
+SELECT v.clientNo, c.fName, c.IName
+FROM viewing v, propertyforrent pr, client c
+WHERE v.propertyno=pr.propertyno
+AND v.clientNo=c.ClientNo
+AND pr.rooms=3
+GROUP BY v.clientNo, c.fName, c.IName
+HAVING count(pr.rooms)=
+(SELECT count(propertyNo)
+FROM PropertyForRent
+WHERE rooms=3);
+
+******* Este segundo funciona aunque la misma persona visite el mismo complejo mas de 1 vez, se puede comprobar con
+****** los INSERT de abajo y cambiando los cuartos de 3 a 4 para que salga CR74 en el de 3 y CR76 en el de 4
+
+SELECT unique(v.ClientNo), c.fName, c.IName
+FROM viewing v, client c,
+(SELECT A.clientNo ClientNo, COUNT(A.PropertyNo) NumDes
+FROM (SELECT UNIQUE(clientNo),PropertyNo
+FROM viewing) A, PropertyforRent pr
+WHERE pr.rooms=3
+AND pr.PropertyNo=A.PropertyNo
+GROUP BY A.clientNo) B
+WHERE v.clientNo=c.clientNo AND
+c.clientNo=B.ClientNo AND
+B.NumDes=(SELECT count(propertyNo)
+FROM PropertyForRent
+WHERE rooms=3);
+
+INSERT INTO viewing VALUES('CR56','PG4','10/10/2018','prueba1');
+INSERT INTO viewing VALUES('CR74','PG4','10/10/2018','prueba2');
+INSERT INTO viewing VALUES('CR74','PG36','10/10/2018','prueba3');
+INSERT INTO viewing VALUES('CR76','PL94','10/10/2018','prueba4');
+INSERT INTO viewing VALUES('CR76','PG16','10/10/2018','prueba5');
+INSERT INTO viewing VALUES('CR76','PL94','10/10/2018','prueba6');
+
+/*3.*/
+
+SELECT c.fName,c.IName,v.viewDate,v.comment1
+FROM client c, viewing v
+WHERE c.clientNo=v.clientNo
+AND viewDate<
+(SELECT min(v.viewDATE)
+FROM viewing v, client c
+WHERE v.clientNo=c.clientNo
+AND (lower(c.fName)=lower('&Nombre') AND lower(c.IName)=lower('&Apellido')));
